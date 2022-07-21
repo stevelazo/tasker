@@ -9,7 +9,7 @@ const EditTask =() =>{
     const [name_response, setNameResponse] = useState('')
     const [last_name_response, setLastNameResponse] = useState('')
     const navigate = useNavigate()
-
+    // eslint-disable-next-line
     const {id} = useParams()
 
     const update = async (e) =>{
@@ -18,6 +18,7 @@ const EditTask =() =>{
         console.log(description)
         console.log(name_response)
         console.log(last_name_response)
+        // eslint-disable-next-line
         await axios.put('http://localhost:8000/api/task/${id}',{
             title:title,
             description:description,
@@ -29,6 +30,7 @@ const EditTask =() =>{
 
     useEffect(()=>{
         const getTaskById =  async ()=>{
+            // eslint-disable-next-line
             const response =  await axios.get('http://localhost:8000/api/task/${id}')
             console.log(response.data)
             setTitle( response.data.title )

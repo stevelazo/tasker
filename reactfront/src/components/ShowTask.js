@@ -16,6 +16,7 @@ const ShowTask = () => {
     }
     ////Metodo para eliminar una tarea////
     const deleteTask = async (id) =>{
+        // eslint-disable-next-line
         axios.delete('http://localhost:8000/api/task/${id}')
         getAllTask()
 
