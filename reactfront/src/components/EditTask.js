@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState, useEffect} from "react";
 import { useNavigate, useParams  } from "react-router-dom";
 
+const endpoint = 'http://localhost:8000/api' ////Ruta de conexion con Laravel////
+
 const EditTask =() =>{
 
     const [title, setTitle] = useState('')
@@ -19,7 +21,7 @@ const EditTask =() =>{
         console.log(name_response)
         console.log(last_name_response)
         // eslint-disable-next-line
-        await axios.put('http://localhost:8000/api/task/${id}',{
+        await axios.put(`${endpoint}/task/${id}`,{
             title:title,
             description:description,
             name_response:name_response,
@@ -27,11 +29,11 @@ const EditTask =() =>{
         })
          navigate('/')
      }
-
+ 
     useEffect(()=>{
         const getTaskById =  async ()=>{
             // eslint-disable-next-line
-            const response =  await axios.get('http://localhost:8000/api/task/${id}')
+            const response =  await axios.get(`${endpoint}/task/${id}`)
             console.log(response.data)
             setTitle( response.data.title )
             setDescription( response.data.description )
@@ -41,7 +43,7 @@ const EditTask =() =>{
         }
 
         getTaskById()
-
+        // eslint-disable-next-line
     },[])
 
 
