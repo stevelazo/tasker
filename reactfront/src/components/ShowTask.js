@@ -101,11 +101,11 @@ const ShowTask = () => {
             setStateTitleEdit("El titulo no Puede ser Vacio")
         }else{
             formIsValid = true;
-            setStateTitleEdit("")
+            setStateTitleEdit("") 
         }
         
         ////Validacion de Titulo de la Tarea Ya Existe////
-        if((await getTaskByTitle(title_edit)).valueOf(true)){
+        if((await getTaskByTitleEdit(title_edit,id_edit)).valueOf(true)){
             formIsValid = false;
             setStateTitleEdit("Ya existe una tarea registrada con ese titulo")
         }else{
@@ -190,6 +190,18 @@ const ShowTask = () => {
     ////Metodo para Obtener la Infprmacion de la Tarea para Editar////
     const getTaskByTitle =  async (title)=>{
         const response =  await axios.get(`${endpoint}/taskexist/${title}`)
+       
+        if(response.data>0){
+            console.log("existe")
+            return true
+        }else{
+            console.log("No existe")
+            return false
+        }
+    }
+
+    const getTaskByTitleEdit =  async (title,id)=>{
+        const response =  await axios.get(`${endpoint}/taskexistedit/${title}/${id}`)
        
         if(response.data>0){
             console.log("existe")

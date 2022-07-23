@@ -54,12 +54,17 @@ class TaskController extends Controller
         return $task;
     }
 
-    ////Funcion para Validar titulo Tarea////
+    ////Funcion para Validar titulo Tarea al Crear////
     public function taskexist($title)
     {   
-        
         $task = Task::where('title','=',$title)->get();
-     //   dd($task->count());
+        return $task->count();
+    }
+
+    ////Funcion para Validar titulo Tarea al Editar////
+    public function taskexistedit($title,$id)
+    {   
+        $task = Task::where('id','<>',$id)->where('title','=',$title)->get();
         return $task->count();
     }
 }

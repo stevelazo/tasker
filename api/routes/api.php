@@ -15,6 +15,7 @@ Route::controller(TaskController::class)->group(function (){
     Route::get('/task/{id}','show');////Ruta para mostrar una tarea
     Route::put('/task/{id}','update');////Ruta para actualizar una tarea
     Route::delete('/task/{id}','destroy');////Ruta para eliminar una tarea
-    Route::get('/taskexist/{title}','taskexist');////Ruta para validar titula de tarea existe
+    Route::get('/taskexist/{title}','taskexist');////Ruta para validar titulo de tarea existe al crear
+    Route::get('/taskexistedit/{title}/{id}','taskexistedit');////Ruta para validar titula de tarea existe
 
 });
