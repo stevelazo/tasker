@@ -22,7 +22,6 @@ class TaskController extends Controller
         $task->title                = $request->title;
         $task->description          = $request->description;
         $task->name_response        = $request->name_response;      	  
-        $task->last_name_response   = $request->last_name_response;         
         $task->save();
 
         return $task;
@@ -43,7 +42,6 @@ class TaskController extends Controller
         $task->title                = $request->title;
         $task->description          = $request->description;
         $task->name_response        = $request->name_response;      	  
-        $task->last_name_response   = $request->last_name_response;         
         $task->save();
 
         return $task;
@@ -54,5 +52,14 @@ class TaskController extends Controller
     {
         $task = Task::destroy($id);
         return $task;
+    }
+
+    ////Funcion para Validar titulo Tarea////
+    public function taskexist($title)
+    {   
+        
+        $task = Task::where('title','=',$title)->get();
+     //   dd($task->count());
+        return $task->count();
     }
 }

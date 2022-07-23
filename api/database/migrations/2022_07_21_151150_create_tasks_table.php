@@ -18,7 +18,6 @@ class CreateTasksTable extends Migration
             $table->string('title')->unique();
             $table->text('description');
             $table->string('name_response');
-            $table->string('last_name_response');
             $table->timestamps();
         });
     }
